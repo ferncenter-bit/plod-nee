@@ -1,0 +1,393 @@
+<div id="expense-app-mockup" class="expense-mockup" aria-label="ตัวอย่างแอปจัดการค่าใช้จ่ายครอบครัว">
+  <style>
+    #expense-app-mockup {
+      --ink: #1f2933;
+      --muted: #6b7280;
+      --line: #e7e5e4;
+      --paper: #fbfaf7;
+      --panel: #ffffff;
+      --nav: #153b66;
+      --nav-soft: #1f5c93;
+      --mint: #dcebf7;
+      --mint-strong: #2b6fa3;
+      --coral: #e67b62;
+      --amber: #e7b65a;
+      --lavender: #e5e2f4;
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 320px;
+      color: var(--ink);
+      font-family: "Avenir Next", "Noto Sans Thai", system-ui, sans-serif;
+      background: var(--paper);
+      border: 1px solid #ddd8d1;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    #expense-app-mockup * { box-sizing: border-box; }
+    #expense-app-mockup button { font: inherit; }
+
+    #expense-app-mockup .shell {
+      display: grid;
+      grid-template-columns: 214px minmax(0, 1fr);
+      min-height: 650px;
+    }
+
+    #expense-app-mockup .sidebar {
+      background: var(--nav);
+      color: #f5fbf8;
+      padding: 26px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    #expense-app-mockup .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 10px;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    #expense-app-mockup .brand-mark {
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--coral);
+      color: #fff;
+    }
+
+    #expense-app-mockup .brand-mark i { width: 17px; height: 17px; }
+    #expense-app-mockup .nav-label {
+      color: #abc5dc;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding: 0 10px 8px;
+    }
+
+    #expense-app-mockup .nav-list { display: grid; gap: 5px; }
+
+    #expense-app-mockup .nav-item {
+      border: 0;
+      color: #dceafa;
+      background: transparent;
+      padding: 11px 11px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-align: left;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    #expense-app-mockup .nav-item i { width: 16px; height: 16px; }
+    #expense-app-mockup .nav-item.is-active,
+    #expense-app-mockup .nav-item:hover { background: var(--nav-soft); color: #fff; }
+
+    #expense-app-mockup .sidebar-bottom {
+      margin-top: auto;
+      border-top: 1px solid rgba(220, 238, 231, .18);
+      padding-top: 18px;
+      display: grid;
+      gap: 15px;
+    }
+
+    #expense-app-mockup .family-switcher {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 8px;
+      font-size: 12px;
+    }
+
+    #expense-app-mockup .family-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #dcebf7;
+      color: var(--nav);
+      display: grid;
+      place-items: center;
+      font-weight: 500;
+      font-size: 12px;
+    }
+
+    #expense-app-mockup .content { min-width: 0; background: var(--paper); }
+    #expense-app-mockup .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 22px 30px 10px;
+    }
+
+    #expense-app-mockup .eyebrow { color: var(--muted); font-size: 12px; margin: 0 0 5px; }
+    #expense-app-mockup h1 { font-size: 23px; line-height: 1.2; font-weight: 500; margin: 0; }
+    #expense-app-mockup .topbar-actions { display: flex; align-items: center; gap: 11px; }
+    #expense-app-mockup .icon-btn,
+    #expense-app-mockup .primary-btn {
+      border: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    #expense-app-mockup .icon-btn {
+      width: 35px;
+      height: 35px;
+      border-radius: 9px;
+      color: var(--muted);
+      background: transparent;
+    }
+    #expense-app-mockup .icon-btn:hover { background: #efede9; color: var(--ink); }
+    #expense-app-mockup .icon-btn i { width: 17px; height: 17px; }
+    #expense-app-mockup .primary-btn {
+      min-height: 36px;
+      padding: 0 14px;
+      border-radius: 9px;
+      background: var(--coral);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    #expense-app-mockup .primary-btn:hover { background: #d96c54; }
+    #expense-app-mockup .primary-btn i { width: 15px; height: 15px; }
+
+    #expense-app-mockup .main {
+      padding: 14px 30px 30px;
+      display: grid;
+      gap: 20px;
+    }
+
+    #expense-app-mockup .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    #expense-app-mockup .summary {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 17px;
+      min-width: 0;
+    }
+    #expense-app-mockup .summary-label { color: var(--muted); font-size: 11px; margin-bottom: 9px; }
+    #expense-app-mockup .summary-value { font-size: 22px; font-weight: 500; letter-spacing: 0; }
+    #expense-app-mockup .summary-note { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 11px; margin-top: 7px; }
+    #expense-app-mockup .summary-note strong { color: var(--mint-strong); font-weight: 500; }
+    #expense-app-mockup .summary-note.warn strong { color: var(--coral); }
+
+    #expense-app-mockup .dashboard-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+      gap: 12px;
+    }
+    #expense-app-mockup .dash-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      min-width: 0;
+    }
+    #expense-app-mockup .dash-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 13px; }
+    #expense-app-mockup .dash-title { font-size: 13px; font-weight: 500; margin: 0; }
+    #expense-app-mockup .dash-subtitle { color: var(--muted); font-size: 10px; }
+    #expense-app-mockup .budget-line { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    #expense-app-mockup .budget-spent { font-size: 20px; font-weight: 500; }
+    #expense-app-mockup .budget-total { color: var(--muted); font-size: 11px; }
+    #expense-app-mockup .progress-track { height: 8px; background: #edf0ec; border-radius: 8px; margin: 12px 0 8px; overflow: hidden; }
+    #expense-app-mockup .progress-fill { width: 68%; height: 100%; background: var(--mint-strong); border-radius: inherit; }
+    #expense-app-mockup .budget-foot { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 10px; }
+    #expense-app-mockup .budget-foot strong { color: var(--ink); font-weight: 500; }
+    #expense-app-mockup .category-bars { display: grid; gap: 9px; }
+    #expense-app-mockup .category-row { display: grid; grid-template-columns: 78px minmax(0, 1fr) 52px; gap: 9px; align-items: center; font-size: 10px; }
+    #expense-app-mockup .category-name { color: var(--muted); }
+    #expense-app-mockup .bar-track { height: 7px; background: #f0eeeb; border-radius: 8px; overflow: hidden; }
+    #expense-app-mockup .bar-fill { height: 100%; border-radius: inherit; background: var(--coral); }
+    #expense-app-mockup .bar-fill.mint { background: var(--mint-strong); }
+    #expense-app-mockup .bar-fill.amber { background: var(--amber); }
+    #expense-app-mockup .category-value { text-align: right; font-size: 10px; white-space: nowrap; }
+
+    #expense-app-mockup .section-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; }
+    #expense-app-mockup .section-title { font-size: 14px; font-weight: 500; margin: 0; }
+    #expense-app-mockup .text-btn { color: var(--mint-strong); background: transparent; border: 0; cursor: pointer; font-size: 11px; padding: 3px; }
+
+    #expense-app-mockup .workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(230px, .75fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    #expense-app-mockup .expense-list,
+    #expense-app-mockup .recurring-list,
+    #expense-app-mockup .members-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    #expense-app-mockup .expense-list { overflow: hidden; }
+    #expense-app-mockup .expense-row {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 11px;
+      padding: 12px 16px;
+      border-top: 1px solid #f0eeeb;
+    }
+    #expense-app-mockup .expense-row:first-child { border-top: 0; }
+    #expense-app-mockup .expense-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      color: var(--nav);
+    }
+    #expense-app-mockup .expense-icon i { width: 16px; height: 16px; }
+    #expense-app-mockup .house { background: var(--mint); }
+    #expense-app-mockup .car { background: #f5e8c9; }
+    #expense-app-mockup .fuel { background: #f6ded9; }
+    #expense-app-mockup .phone { background: var(--lavender); }
+    #expense-app-mockup .expense-name { font-size: 12px; font-weight: 500; }
+    #expense-app-mockup .expense-meta { color: var(--muted); font-size: 10px; margin-top: 3px; }
+    #expense-app-mockup .expense-amount { font-size: 12px; font-weight: 500; text-align: right; white-space: nowrap; }
+    #expense-app-mockup .expense-person { color: var(--muted); font-size: 10px; text-align: right; margin-top: 3px; }
+
+    #expense-app-mockup .side-stack { display: grid; gap: 18px; }
+    #expense-app-mockup .panel-pad { padding: 16px; }
+    #expense-app-mockup .due-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px solid #f0eeeb; }
+    #expense-app-mockup .due-row:first-of-type { border-top: 0; }
+    #expense-app-mockup .due-copy { min-width: 0; }
+    #expense-app-mockup .due-name { font-size: 11px; font-weight: 500; }
+    #expense-app-mockup .due-date { color: var(--muted); font-size: 10px; margin-top: 3px; }
+    #expense-app-mockup .due-amount { font-size: 11px; white-space: nowrap; }
+    #expense-app-mockup .due-badge { color: #9b6b12; background: #fff3d4; padding: 4px 7px; border-radius: 6px; font-size: 9px; white-space: nowrap; }
+
+    #expense-app-mockup .member-row { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid #f0eeeb; }
+    #expense-app-mockup .member-row:first-of-type { border-top: 0; }
+    #expense-app-mockup .member-avatar { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 10px; font-weight: 500; color: var(--nav); background: var(--mint); }
+    #expense-app-mockup .member-avatar.two { background: var(--lavender); }
+    #expense-app-mockup .member-copy { min-width: 0; flex: 1; }
+    #expense-app-mockup .member-name { font-size: 11px; font-weight: 500; }
+    #expense-app-mockup .member-role { color: var(--muted); font-size: 10px; margin-top: 2px; }
+    #expense-app-mockup .member-total { color: var(--muted); font-size: 10px; }
+
+    #expense-app-mockup .toast { display: none; position: absolute; right: 22px; bottom: 22px; background: var(--nav); color: #fff; padding: 10px 13px; border-radius: 8px; font-size: 11px; box-shadow: 0 8px 24px rgba(22, 57, 53, .2); }
+    #expense-app-mockup.is-notified .toast { display: block; }
+
+    @media (max-width: 760px) {
+      #expense-app-mockup .shell { grid-template-columns: 1fr; }
+      #expense-app-mockup .sidebar { padding: 17px 16px; gap: 18px; }
+      #expense-app-mockup .brand { padding: 0 4px; }
+      #expense-app-mockup .nav-label, #expense-app-mockup .sidebar-bottom { display: none; }
+      #expense-app-mockup .nav-list { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+      #expense-app-mockup .nav-item { justify-content: center; padding: 9px 5px; font-size: 10px; }
+      #expense-app-mockup .nav-item i { width: 14px; height: 14px; }
+      #expense-app-mockup .topbar, #expense-app-mockup .main { padding-left: 18px; padding-right: 18px; }
+      #expense-app-mockup .summary-grid { grid-template-columns: 1fr; }
+      #expense-app-mockup .dashboard-grid { grid-template-columns: 1fr; }
+      #expense-app-mockup .workspace { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark"><i data-lucide="wallet" aria-hidden="true"></i></span><span>บ้านเรา Finance</span></div>
+      <div>
+        <div class="nav-label">เมนูหลัก</div>
+        <div class="nav-list" role="navigation" aria-label="เมนูหลัก">
+          <button class="nav-item is-active" type="button"><i data-lucide="layout-dashboard" aria-hidden="true"></i><span>Dashboard</span></button>
+          <button class="nav-item" type="button"><i data-lucide="receipt" aria-hidden="true"></i><span>รายการจ่าย</span></button>
+          <button class="nav-item" type="button"><i data-lucide="repeat-2" aria-hidden="true"></i><span>รายการประจำ</span></button>
+          <button class="nav-item" type="button"><i data-lucide="users" aria-hidden="true"></i><span>สมาชิกในบ้าน</span></button>
+        </div>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="family-switcher"><span class="family-avatar">บ</span><span>บ้านของเรา<br><small style="color:#abc5dc">3 สมาชิก</small></span></div>
+        <button class="nav-item" type="button"><i data-lucide="settings" aria-hidden="true"></i><span>ตั้งค่า</span></button>
+      </div>
+    </aside>
+
+    <section class="content">
+      <header class="topbar">
+        <div><p class="eyebrow">Dashboard · พฤหัสบดี 24 กันยายน 2026</p><h1>สวัสดีค่ะ คุณวรัญญา</h1></div>
+        <div class="topbar-actions"><button class="icon-btn" type="button" aria-label="การแจ้งเตือน" data-tooltip="การแจ้งเตือน"><i data-lucide="bell" aria-hidden="true"></i></button><button class="primary-btn" type="button" id="add-expense"><i data-lucide="plus" aria-hidden="true"></i>เพิ่มรายการ</button></div>
+      </header>
+
+      <main class="main">
+        <div class="summary-grid">
+          <article class="summary"><div class="summary-label">ค่าใช้จ่ายเดือนนี้</div><div class="summary-value tabular-nums">฿48,260</div><div class="summary-note"><strong>↓ 8.4%</strong> เทียบกับเดือนก่อน</div></article>
+          <article class="summary"><div class="summary-label">ค่าใช้จ่ายประจำ</div><div class="summary-value tabular-nums">฿35,900</div><div class="summary-note warn"><strong>4 รายการ</strong> ครบกำหนดในเดือนนี้</div></article>
+          <article class="summary"><div class="summary-label">ค่าใช้จ่ายส่วนตัวของฉัน</div><div class="summary-value tabular-nums">฿6,780</div><div class="summary-note">จากงบส่วนตัว ฿10,000</div></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="dash-panel">
+            <div class="dash-head"><h2 class="dash-title">งบประมาณครอบครัวเดือนนี้</h2><span class="dash-subtitle">กันไว้ ฿70,000</span></div>
+            <div class="budget-line"><span class="budget-spent tabular-nums">฿48,260</span><span class="budget-total">ใช้ไป 68%</span></div>
+            <div class="progress-track" role="progressbar" aria-label="งบประมาณที่ใช้ไป" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"><div class="progress-fill"></div></div>
+            <div class="budget-foot"><span>คงเหลือ <strong>฿21,740</strong></span><span>อีก 6 วันถึงสิ้นเดือน</span></div>
+          </section>
+          <section class="dash-panel">
+            <div class="dash-head"><h2 class="dash-title">สัดส่วนค่าใช้จ่าย</h2><span class="dash-subtitle">เดือนกันยายน</span></div>
+            <div class="category-bars">
+              <div class="category-row"><span class="category-name">บ้าน</span><span class="bar-track"><span class="bar-fill mint" style="width:82%"></span></span><span class="category-value tabular-nums">฿25,000</span></div>
+              <div class="category-row"><span class="category-name">รถยนต์</span><span class="bar-track"><span class="bar-fill" style="width:54%"></span></span><span class="category-value tabular-nums">฿10,100</span></div>
+              <div class="category-row"><span class="category-name">ส่วนตัว</span><span class="bar-track"><span class="bar-fill amber" style="width:34%"></span></span><span class="category-value tabular-nums">฿6,780</span></div>
+            </div>
+          </section>
+        </div>
+
+        <div class="workspace">
+          <section>
+            <div class="section-head"><h2 class="section-title">รายการล่าสุด</h2><button class="text-btn" type="button">ดูทั้งหมด →</button></div>
+            <div class="expense-list">
+              <div class="expense-row"><span class="expense-icon house"><i data-lucide="home" aria-hidden="true"></i></span><div><div class="expense-name">ค่าบ้านหลังที่ 1</div><div class="expense-meta">วันนี้ · ค่าใช้จ่ายประจำ</div></div><div><div class="expense-amount tabular-nums">฿12,500</div><div class="expense-person">คุณวรัญญา</div></div></div>
+              <div class="expense-row"><span class="expense-icon car"><i data-lucide="car-front" aria-hidden="true"></i></span><div><div class="expense-name">ค่าผ่อนรถยนต์</div><div class="expense-meta">เมื่อวาน · ค่าใช้จ่ายประจำ</div></div><div><div class="expense-amount tabular-nums">฿8,900</div><div class="expense-person">คุณวรัญญา</div></div></div>
+              <div class="expense-row"><span class="expense-icon fuel"><i data-lucide="fuel" aria-hidden="true"></i></span><div><div class="expense-name">เติมน้ำมันรถ</div><div class="expense-meta">23 ก.ย. · ค่าใช้จ่ายส่วนตัว</div></div><div><div class="expense-amount tabular-nums">฿1,200</div><div class="expense-person">คุณวรัญญา</div></div></div>
+              <div class="expense-row"><span class="expense-icon phone"><i data-lucide="smartphone" aria-hidden="true"></i></span><div><div class="expense-name">ค่าโทรศัพท์</div><div class="expense-meta">22 ก.ย. · ค่าใช้จ่ายประจำ</div></div><div><div class="expense-amount tabular-nums">฿899</div><div class="expense-person">คุณแม่</div></div></div>
+            </div>
+          </section>
+
+          <div class="side-stack">
+            <section>
+              <div class="section-head"><h2 class="section-title">ใกล้ถึงกำหนด</h2><button class="text-btn" type="button">จัดการ</button></div>
+              <div class="recurring-list panel-pad">
+                <div class="due-row"><div class="due-copy"><div class="due-name">ค่าบ้านหลังที่ 2</div><div class="due-date">ครบกำหนด 28 ก.ย.</div></div><span class="due-badge">อีก 4 วัน</span></div>
+                <div class="due-row"><div class="due-copy"><div class="due-name">ประกันชีวิต</div><div class="due-date">ครบกำหนด 30 ก.ย.</div></div><div class="due-amount tabular-nums">฿3,200</div></div>
+                <div class="due-row"><div class="due-copy"><div class="due-name">ภาษีรถยนต์</div><div class="due-date">ครบกำหนด 5 ต.ค.</div></div><div class="due-amount tabular-nums">฿1,750</div></div>
+              </div>
+            </section>
+            <section>
+              <div class="section-head"><h2 class="section-title">สมาชิกในบ้าน</h2><button class="text-btn" type="button">เชิญสมาชิก</button></div>
+              <div class="members-panel panel-pad">
+                <div class="member-row"><span class="member-avatar">ว</span><div class="member-copy"><div class="member-name">คุณวรัญญา</div><div class="member-role">เจ้าของบ้าน</div></div><div class="member-total">฿20,400</div></div>
+                <div class="member-row"><span class="member-avatar two">ม</span><div class="member-copy"><div class="member-name">คุณแม่</div><div class="member-role">สมาชิก</div></div><div class="member-total">฿9,860</div></div>
+                <div class="member-row"><span class="member-avatar" style="background:#f5e8c9">น</span><div class="member-copy"><div class="member-name">คุณน้อง</div><div class="member-role">สมาชิก</div></div><div class="member-total">฿4,200</div></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </section>
+  </div>
+  <div class="toast" role="status" aria-live="polite">เปิดแบบฟอร์มเพิ่มรายการแล้ว</div>
+
+  <script>
+    const root = document.getElementById('expense-app-mockup');
+    root.querySelector('#add-expense').addEventListener('click', () => root.classList.toggle('is-notified'));
+    root.querySelectorAll('.nav-item').forEach((item) => item.addEventListener('click', () => {
+      root.querySelectorAll('.nav-item').forEach((nav) => nav.classList.remove('is-active'));
+      item.classList.add('is-active');
+    }));
+  </script>
+</div>
