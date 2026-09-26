@@ -3,107 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#153b66" />
-    <title>ปลดหนี้ | วางแผนการเงินครอบครัว</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <meta name="theme-color" content="#fff9f2" />
+    <title>เงินงอก | ลงทุนทีละนิด ให้เงินเติบโต</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
   </head>
   <body>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
-
     <section id="login-screen" class="login-screen">
       <div class="login-hero">
-        <div class="brand brand-light"><span class="brand-mark"><i data-lucide="shield-check" aria-hidden="true"></i></span><span>ปลดหนี้</span></div>
-        <div class="login-copy">
-          <p class="eyebrow">ค่อย ๆ จัดการไปด้วยกันนะ</p>
-          <h1>บ้านของเรา<br />การเงินของเรา</h1>
-          <p>เปลี่ยนเรื่องหนี้ที่ดูยาก ให้กลายเป็นก้าวเล็ก ๆ ที่ทำตามได้จริง</p>
-        </div>
-        <div class="login-promise"><span><i data-lucide="check" aria-hidden="true"></i> เห็นหนี้ทั้งหมดในหน้าเดียว</span><span><i data-lucide="check" aria-hidden="true"></i> เลือกวิธีปลดหนี้ที่เหมาะกับคุณ</span><span><i data-lucide="check" aria-hidden="true"></i> ข้อมูลตัวอย่างเก็บไว้ในเครื่อง</span></div>
+        <div class="brand brand-dark"><span class="brand-mark"><i data-lucide="sprout" aria-hidden="true"></i></span><span>เงินงอก</span></div>
+        <div class="login-copy"><p class="eyebrow">ลงทุนทีละนิด ให้เงินค่อย ๆ เติบโต</p><h1>ดูแลพอร์ต<br />ให้อุ่นใจทุกวัน</h1><p>พื้นที่เล็ก ๆ สำหรับติดตามการลงทุน วางแผน DCA และเห็นเป้าหมายของตัวเองชัดขึ้น</p></div>
+        <div class="login-promise"><span><i data-lucide="leaf" aria-hidden="true"></i> เห็นพอร์ตทั้งหมดในหน้าเดียว</span><span><i data-lucide="target" aria-hidden="true"></i> ลงทุนตามเป้าหมาย ไม่ตามอารมณ์</span><span><i data-lucide="heart" aria-hidden="true"></i> ข้อมูลตัวอย่างเก็บไว้ในเครื่อง</span></div>
       </div>
-      <div class="login-panel">
-        <div class="login-panel-head"><p class="eyebrow">เข้าสู่บ้านของคุณ</p><h2>ยินดีต้อนรับกลับมา</h2><p class="muted">ใช้บัญชีตัวอย่างเพื่อทดลองระบบได้ทันที</p></div>
-        <form id="login-form" class="form-stack">
-          <label class="field"><span>ผู้ใช้</span><select id="login-user" required></select></label>
-          <label class="field"><span>รหัสผ่านตัวอย่าง</span><input id="login-pin" type="password" value="1234" inputmode="numeric" minlength="4" required /></label>
-          <button class="btn btn-primary btn-block" type="submit"><i data-lucide="log-in" aria-hidden="true"></i>เข้าสู่ Dashboard</button>
-        </form>
-        <p class="form-hint">บัญชีทดลองทุกคนใช้รหัสผ่าน <strong>1234</strong></p>
-      </div>
+      <div class="login-panel"><div class="login-panel-head"><p class="eyebrow">พื้นที่ของคุณ</p><h2>กลับมาดูพอร์ตกันนะ</h2><p class="muted">ใช้บัญชีทดลองเพื่อเริ่มต้นดูแอพได้ทันที</p></div><form id="login-form" class="form-stack"><label class="field"><span>ผู้ใช้</span><select id="login-user" required></select></label><label class="field"><span>รหัสผ่านตัวอย่าง</span><input id="login-pin" type="password" value="1234" inputmode="numeric" minlength="4" required /></label><button class="btn btn-primary btn-block" type="submit"><i data-lucide="arrow-right" aria-hidden="true"></i>เข้าสู่พอร์ตของฉัน</button></form><p class="form-hint">บัญชีทดลองใช้รหัสผ่าน <strong>1234</strong></p></div>
     </section>
 
     <div id="app-screen" class="app-shell" hidden>
-      <aside class="sidebar">
-        <div class="brand brand-light"><span class="brand-mark"><i data-lucide="shield-check" aria-hidden="true"></i></span><span>ปลดหนี้</span></div>
-        <div class="sidebar-label">เมนูหลัก</div>
-        <nav id="main-nav" class="main-nav" aria-label="เมนูหลัก">
-          <button class="nav-item is-active" type="button" data-view="dashboard"><i data-lucide="layout-dashboard" aria-hidden="true"></i><span>ภาพรวม</span></button>
-          <button class="nav-item" type="button" data-view="debts"><i data-lucide="landmark" aria-hidden="true"></i><span>หนี้ของฉัน</span></button>
-          <button class="nav-item" type="button" data-view="expenses"><i data-lucide="receipt" aria-hidden="true"></i><span>รายจ่าย</span></button>
-          <button class="nav-item" type="button" data-view="plan"><i data-lucide="route" aria-hidden="true"></i><span>แผนปลดหนี้</span></button>
-          <button class="nav-item" type="button" data-view="family"><i data-lucide="users" aria-hidden="true"></i><span>ครอบครัว</span></button>
-        </nav>
-        <div class="sidebar-bottom">
-          <button id="sidebar-family" class="family-chip" type="button"><span id="sidebar-avatar" class="avatar">ว</span><span><strong id="sidebar-name">คุณวรัญญา</strong><small>บ้านของเรา</small></span><i data-lucide="chevrons-up-down" aria-hidden="true"></i></button>
-          <button id="logout-btn" class="nav-item nav-item-muted" type="button"><i data-lucide="log-out" aria-hidden="true"></i><span>ออกจากระบบ</span></button>
-        </div>
-      </aside>
-
-      <main class="main-content">
-        <header class="topbar">
-          <div><p id="page-kicker" class="eyebrow">Dashboard · วันนี้</p><h1 id="page-title">ภาพรวมการเงินของบ้าน</h1></div>
-          <div class="topbar-actions"><button id="notification-btn" class="icon-btn" type="button" aria-label="ดูการแจ้งเตือน" data-tooltip="การแจ้งเตือน"><i data-lucide="bell" aria-hidden="true"></i><span class="notification-dot"></span></button><button id="add-expense-btn" class="btn btn-primary" type="button"><i data-lucide="plus" aria-hidden="true"></i>เพิ่มรายการ</button></div>
-        </header>
-
-        <div id="view-dashboard" class="view is-visible"></div>
-        <div id="view-debts" class="view"></div>
-        <div id="view-expenses" class="view"></div>
-        <div id="view-plan" class="view"></div>
-        <div id="view-family" class="view"></div>
-      </main>
+      <aside class="sidebar"><div class="brand brand-dark"><span class="brand-mark"><i data-lucide="sprout" aria-hidden="true"></i></span><span>เงินงอก</span></div><div class="sidebar-label">พื้นที่ลงทุน</div><nav id="main-nav" class="main-nav" aria-label="เมนูหลัก"><button class="nav-item is-active" type="button" data-view="dashboard"><i data-lucide="layout-dashboard" aria-hidden="true"></i><span>ภาพรวม</span></button><button class="nav-item" type="button" data-view="portfolio"><i data-lucide="pie-chart" aria-hidden="true"></i><span>พอร์ตของฉัน</span></button><button class="nav-item" type="button" data-view="transactions"><i data-lucide="notebook-tabs" aria-hidden="true"></i><span>รายการลงทุน</span></button><button class="nav-item" type="button" data-view="goals"><i data-lucide="target" aria-hidden="true"></i><span>เป้าหมาย</span></button><button class="nav-item" type="button" data-view="journal"><i data-lucide="book-heart" aria-hidden="true"></i><span>บันทึกใจ</span></button></nav><div class="sidebar-bottom"><div class="profile-chip"><span id="sidebar-avatar" class="avatar">ว</span><span><strong id="sidebar-name">คุณวรัญญา</strong><small>พอร์ตส่วนตัว</small></span></div><button id="logout-btn" class="nav-item nav-item-muted" type="button"><i data-lucide="log-out" aria-hidden="true"></i><span>ออกจากระบบ</span></button></div></aside>
+      <main class="main-content"><header class="topbar"><div><p id="page-kicker" class="eyebrow">ภาพรวม</p><h1 id="page-title">สวัสดีค่ะ คุณวรัญญา</h1></div><div class="topbar-actions"><button id="notification-btn" class="icon-btn" type="button" aria-label="ดูการแจ้งเตือน" data-tooltip="การแจ้งเตือน"><i data-lucide="bell" aria-hidden="true"></i><span class="notification-dot"></span></button><button id="add-investment-btn" class="btn btn-primary" type="button"><i data-lucide="plus" aria-hidden="true"></i>บันทึกการลงทุน</button></div></header><div id="view-dashboard" class="view is-visible"></div><div id="view-portfolio" class="view"></div><div id="view-transactions" class="view"></div><div id="view-goals" class="view"></div><div id="view-journal" class="view"></div></main>
     </div>
 
     <div id="modal-backdrop" class="modal-backdrop" hidden>
-      <section id="expense-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="expense-modal-title" hidden>
-        <div class="modal-head"><div><p class="eyebrow">รายการใหม่</p><h2 id="expense-modal-title">เพิ่มค่าใช้จ่าย</h2></div><button class="icon-btn close-modal" type="button" aria-label="ปิด"><i data-lucide="x" aria-hidden="true"></i></button></div>
-        <form id="expense-form" class="form-grid">
-          <label class="field field-wide"><span>ชื่อรายการ</span><input name="title" required placeholder="เช่น ค่าน้ำมันรถ" /></label>
-          <label class="field"><span>จำนวนเงิน</span><input name="amount" type="number" min="0" step="0.01" required placeholder="0" /></label>
-          <label class="field"><span>วันที่</span><input name="date" type="date" required /></label>
-          <label class="field"><span>หมวดหมู่</span><select name="category"><option>บ้าน</option><option>รถยนต์</option><option>ประกัน</option><option>มือถือ/อินเทอร์เน็ต</option><option>อาหาร</option><option>ส่วนตัว</option><option>ภาษี</option><option>อื่น ๆ</option></select></label>
-          <label class="field"><span>ประเภท</span><select name="type"><option value="essential">จำเป็น</option><option value="personal">ส่วนตัว</option><option value="debt">ชำระหนี้</option></select></label>
-          <label class="check-row field-wide"><input name="recurring" type="checkbox" /><span>เป็นค่าใช้จ่ายประจำทุกเดือน</span></label>
-          <div class="modal-actions field-wide"><button class="btn btn-ghost close-modal" type="button">ยกเลิก</button><button class="btn btn-primary" type="submit"><i data-lucide="save" aria-hidden="true"></i>บันทึกรายการ</button></div>
-        </form>
-      </section>
-
-      <section id="debt-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="debt-modal-title" hidden>
-        <div class="modal-head"><div><p class="eyebrow">เพิ่มข้อมูลหนี้</p><h2 id="debt-modal-title">เพิ่มหนี้ก้อนใหม่</h2></div><button class="icon-btn close-modal" type="button" aria-label="ปิด"><i data-lucide="x" aria-hidden="true"></i></button></div>
-        <form id="debt-form" class="form-grid">
-          <label class="field field-wide"><span>ชื่อหนี้</span><input name="name" required placeholder="เช่น บัตรเครดิตธนาคาร A" /></label>
-          <label class="field"><span>ยอดคงเหลือ</span><input name="balance" type="number" min="0" step="0.01" required placeholder="0" /></label>
-          <label class="field"><span>ดอกเบี้ยต่อปี (%)</span><input name="rate" type="number" min="0" step="0.01" required placeholder="0" /></label>
-          <label class="field"><span>ค่างวดขั้นต่ำ/เดือน</span><input name="minimum" type="number" min="0" step="0.01" required placeholder="0" /></label>
-          <label class="field"><span>วันครบกำหนด</span><input name="dueDay" type="number" min="1" max="31" required placeholder="15" /></label>
-          <label class="field field-wide"><span>ประเภทหนี้</span><select name="type"><option>บ้าน</option><option>รถยนต์</option><option>บัตรเครดิต</option><option>สินเชื่อส่วนบุคคล</option><option>อื่น ๆ</option></select></label>
-          <div class="modal-actions field-wide"><button class="btn btn-ghost close-modal" type="button">ยกเลิก</button><button class="btn btn-primary" type="submit"><i data-lucide="save" aria-hidden="true"></i>บันทึกหนี้</button></div>
-        </form>
-      </section>
-
-      <section id="member-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="member-modal-title" hidden>
-        <div class="modal-head"><div><p class="eyebrow">สมาชิกในบ้าน</p><h2 id="member-modal-title">เพิ่มผู้ใช้</h2></div><button class="icon-btn close-modal" type="button" aria-label="ปิด"><i data-lucide="x" aria-hidden="true"></i></button></div>
-        <form id="member-form" class="form-grid">
-          <label class="field field-wide"><span>ชื่อสมาชิก</span><input name="name" required placeholder="เช่น คุณพ่อ" /></label>
-          <label class="field"><span>บทบาท</span><select name="role"><option value="member">สมาชิก</option><option value="owner">เจ้าของบ้าน</option></select></label>
-          <label class="field"><span>รหัสผ่าน 4 หลัก</span><input name="pin" type="password" inputmode="numeric" minlength="4" maxlength="4" value="1234" required /></label>
-          <div class="modal-actions field-wide"><button class="btn btn-ghost close-modal" type="button">ยกเลิก</button><button class="btn btn-primary" type="submit"><i data-lucide="user-plus" aria-hidden="true"></i>เพิ่มสมาชิก</button></div>
-        </form>
-      </section>
+      <section id="investment-modal" class="modal" role="dialog" aria-modal="true" hidden><div class="modal-head"><div><p class="eyebrow">เพิ่มข้อมูลใหม่</p><h2>บันทึกการลงทุน</h2></div><button class="icon-btn close-modal" type="button" aria-label="ปิด"><i data-lucide="x" aria-hidden="true"></i></button></div><form id="investment-form" class="form-grid"><label class="field field-wide"><span>ชื่อสินทรัพย์</span><input name="name" required placeholder="เช่น SCBSET, AAPL หรือกองทุนรวม" /></label><label class="field"><span>ประเภท</span><select name="type"><option>หุ้น</option><option>กองทุน</option><option>ETF</option><option>ทองคำ</option><option>คริปโต</option><option>เงินสด</option></select></label><label class="field"><span>รายการ</span><select name="action"><option value="buy">ซื้อ</option><option value="sell">ขาย</option><option value="dividend">เงินปันผล</option></select></label><label class="field"><span>จำนวนเงิน (บาท)</span><input name="amount" type="number" min="0" step="0.01" required placeholder="0" /></label><label class="field"><span>จำนวนหน่วย</span><input name="units" type="number" min="0" step="0.0001" required placeholder="0" /></label><label class="field"><span>ราคาปัจจุบัน/หน่วย</span><input name="price" type="number" min="0" step="0.01" required placeholder="0" /></label><label class="field"><span>วันที่</span><input name="date" type="date" required /></label><label class="check-row field-wide"><input name="monthly" type="checkbox" /><span>ตั้งใจลงทุนรายการนี้เป็นประจำทุกเดือน</span></label><div class="modal-actions field-wide"><button class="btn btn-ghost close-modal" type="button">ยกเลิก</button><button class="btn btn-primary" type="submit"><i data-lucide="save" aria-hidden="true"></i>บันทึกรายการ</button></div></form></section>
+      <section id="goal-modal" class="modal" role="dialog" aria-modal="true" hidden><div class="modal-head"><div><p class="eyebrow">วางหมุดหมายของคุณ</p><h2>เพิ่มเป้าหมายการลงทุน</h2></div><button class="icon-btn close-modal" type="button" aria-label="ปิด"><i data-lucide="x" aria-hidden="true"></i></button></div><form id="goal-form" class="form-grid"><label class="field field-wide"><span>ชื่อเป้าหมาย</span><input name="name" required placeholder="เช่น เงินเกษียณ หรือทริปในฝัน" /></label><label class="field"><span>จำนวนเงินเป้าหมาย</span><input name="target" type="number" min="1" required placeholder="100000" /></label><label class="field"><span>มีแล้วตอนนี้</span><input name="current" type="number" min="0" required placeholder="25000" /></label><label class="field"><span>ลงทุนเพิ่ม/เดือน</span><input name="monthly" type="number" min="0" required placeholder="5000" /></label><label class="field"><span>วันที่อยากถึงเป้าหมาย</span><input name="date" type="date" required /></label><div class="modal-actions field-wide"><button class="btn btn-ghost close-modal" type="button">ยกเลิก</button><button class="btn btn-primary" type="submit"><i data-lucide="target" aria-hidden="true"></i>สร้างเป้าหมาย</button></div></form></section>
+      <section id="journal-modal" class="modal" role="dialog" aria-modal="true" hidden><div class="modal-head"><div><p class="eyebrow">หยุดคิดสักนิด</p><h2>บันทึกความรู้สึก</h2></div><button class="icon-btn close-modal" type="button" aria-label="ปิด"><i data-lucide="x" aria-hidden="true"></i></button></div><form id="journal-form" class="form-stack"><label class="field"><span>หัวข้อ</span><input name="title" required placeholder="เช่น วันนี้ไม่ไล่ตามราคาหุ้น" /></label><label class="field"><span>บันทึกของฉัน</span><textarea name="body" rows="5" required placeholder="เขียนเหตุผล ความรู้สึก หรือบทเรียนสั้น ๆ"></textarea></label><div class="modal-actions"><button class="btn btn-ghost close-modal" type="button">ยกเลิก</button><button class="btn btn-primary" type="submit"><i data-lucide="book-heart" aria-hidden="true"></i>บันทึกไว้</button></div></form></section>
     </div>
-
     <script src="app.js"></script>
   </body>
 </html>

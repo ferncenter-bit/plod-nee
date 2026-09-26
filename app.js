@@ -122,6 +122,16 @@ function debtIcon(type) {
   return "home";
 }
 
+function gameStats() {
+  const score = Math.min(80, state.expenses.length * 2 + state.debts.length * 3);
+  const level = Math.min(5, 1 + Math.floor(score / 20));
+  const xp = score % 20;
+  const titles = ["เริ่มต้น", "ตั้งหลัก", "คุมเกม", "เดินหน้า", "ใกล้ปลดหนี้"];
+  const coins = state.expenses.length * 35 + state.debts.length * 120;
+  const task = state.expenses.length < 7 ? "บันทึกรายจ่ายให้ครบ 7 รายการ" : "บันทึกการชำระหนี้ก้อนแรก";
+  return { score, level, xp, titles, coins, task };
+}
+
 function renderAppShell() {
   const user = currentUser();
   document.querySelector("#sidebar-name").textContent = user.name;
@@ -150,6 +160,7 @@ function renderDashboard() {
   const spent = monthlySpent();
   const remaining = Math.max(0, state.budget - spent);
   const debtProgress = totalDebt() ? Math.max(0, Math.min(100, (1 - totalDebt() / (totalDebt() + 42000)) * 100)) : 0;
+  const game = gameStats();
   const categories = [
     ["บ้าน", monthExpenses().filter((e) => e.category === "บ้าน").reduce((s, e) => s + e.amount, 0), "blue"],
     ["รถยนต์", monthExpenses().filter((e) => e.category === "รถยนต์").reduce((s, e) => s + e.amount, 0), ""],
@@ -160,6 +171,17 @@ function renderDashboard() {
   const dueDebts = [...state.debts].sort((a, b) => a.dueDay - b.dueDay).slice(0, 3);
   document.querySelector("#view-dashboard").innerHTML = `
     <div class="view-head"><div><h2>ภาพรวมการเงินของบ้าน</h2><p>วันนี้เราค่อย ๆ จัดการไปทีละก้าวนะ</p></div><button class="btn btn-ghost" type="button" data-action="open-debt"><i data-lucide="plus" aria-hidden="true"></i>เพิ่มหนี้</button></div>
+    <section class="game-hero">
+      <div class="mascot-stage"><div class="mascot" role="img" aria-label="ตัวการ์ตูนผู้ช่วยปลดหนี้"><span class="mascot-ear left"></span><span class="mascot-ear right"></span><span class="mascot-face"><span class="mascot-eye left"></span><span class="mascot-eye right"></span><span class="mascot-cheek left"></span><span class="mascot-cheek right"></span><span class="mascot-mouth"></span></span><span class="mascot-body"></span></div><span class="mascot-caption">ไปด้วยกันนะ!</span></div>
+      <div class="game-content">
+        <div class="game-topline"><span class="level-pill">${icon("sparkles")} เลเวล ${game.level} · ${game.titles[game.level - 1]}</span><span class="coin-count">${icon("coins")} ${number(game.coins)} เหรียญ</span></div>
+        <h2>ด่านต่อไป: ${game.task}</h2>
+        <p>ทุกก้าวเล็ก ๆ ช่วยให้เราเข้าใกล้วันที่ปลดหนี้ได้มากขึ้น</p>
+        <div class="xp-head"><span>ประสบการณ์ก่อนขึ้นเลเวลถัดไป</span><strong>${game.xp}/20 XP</strong></div><div class="xp-track"><div class="xp-fill" style="width:${Math.max(8, game.xp * 5)}%"></div></div>
+        <div class="game-path">${game.titles.map((title, index) => `<div class="path-node ${index + 1 < game.level ? "is-done" : ""} ${index + 1 === game.level ? "is-current" : ""}"><span class="path-dot">${index + 1 < game.level ? "✓" : index + 1}</span><span>${title}</span></div>`).join("")}</div>
+        <div class="quest-row"><span class="quest-chip">${icon("calendar-check")} บันทึกแล้ว ${monthExpenses().length} รายการ</span><span class="quest-chip">${icon("heart")} บ้านนี้มี ${state.users.length} คน</span></div>
+      </div>
+    </section>
     <section class="metric-grid">
       <article class="metric-card"><div class="metric-label">หนี้คงเหลือทั้งหมด</div><div class="metric-value tabular">${money(totalDebt())}</div><div class="metric-note"><strong>${number(debtProgress)}%</strong> ความคืบหน้าจากยอดเริ่มต้น</div></article>
       <article class="metric-card"><div class="metric-label">ค่างวดขั้นต่ำ/เดือน</div><div class="metric-value tabular">${money(totalMinimum())}</div><div class="metric-note">ต้องกันเงินไว้ก่อนวันครบกำหนด</div></article>
