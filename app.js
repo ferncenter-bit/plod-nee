@@ -159,7 +159,7 @@ function renderDashboard() {
   const recent = [...monthExpenses()].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 5);
   const dueDebts = [...state.debts].sort((a, b) => a.dueDay - b.dueDay).slice(0, 3);
   document.querySelector("#view-dashboard").innerHTML = `
-    <div class="view-head"><div><h2>ภาพรวมการเงินของบ้าน</h2><p>ดูภาพรวม แล้วเลือกก้าวถัดไปที่ช่วยให้หนี้ลดลง</p></div><button class="btn btn-ghost" type="button" data-action="open-debt"><i data-lucide="plus" aria-hidden="true"></i>เพิ่มหนี้</button></div>
+    <div class="view-head"><div><h2>ภาพรวมการเงินของบ้าน</h2><p>วันนี้เราค่อย ๆ จัดการไปทีละก้าวนะ</p></div><button class="btn btn-ghost" type="button" data-action="open-debt"><i data-lucide="plus" aria-hidden="true"></i>เพิ่มหนี้</button></div>
     <section class="metric-grid">
       <article class="metric-card"><div class="metric-label">หนี้คงเหลือทั้งหมด</div><div class="metric-value tabular">${money(totalDebt())}</div><div class="metric-note"><strong>${number(debtProgress)}%</strong> ความคืบหน้าจากยอดเริ่มต้น</div></article>
       <article class="metric-card"><div class="metric-label">ค่างวดขั้นต่ำ/เดือน</div><div class="metric-value tabular">${money(totalMinimum())}</div><div class="metric-note">ต้องกันเงินไว้ก่อนวันครบกำหนด</div></article>
